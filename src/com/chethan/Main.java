@@ -12,44 +12,51 @@ public class Main {
         int noOfRows = sc.nextInt();
         System.out.println("Enter the number of seats in each row:");
         int noOfCols = sc.nextInt();
-
-
         String[][] rooms = new String[noOfRows][noOfCols];
         for (int i=0; i < noOfRows; i++) {
             for (int j = 0; j < noOfCols; j++) {
                 rooms[i][j] = "S ";
             }
         }
+        while (true) {
+            System.out.println("1. Show the seats");
+            System.out.println("2. Buy a ticket");
+            System.out.println("0. Exit");
 
-        printRoom(rooms, noOfRows, noOfCols);
+            int menu = sc.nextInt();
+            if (menu == 0) {
+                break;
+            }
+            if (menu == 1) {
+                printRoom(rooms, noOfRows, noOfCols);
+            } else if (menu == 2) {
+                System.out.println("Enter a row number:");
+                int rowNum = sc.nextInt();
+                System.out.println("Enter a seat number in that row:");
+                int colNum = sc.nextInt();
 
-        System.out.println("Enter a row number:");
-        int rowNum = sc.nextInt();
-        System.out.println("Enter a seat number in that row:");
-        int colNum = sc.nextInt();
-
-        int ticketCost;
-        if(noOfRows*noOfCols <= 60) {
-            ticketCost = 10;
-        } else {
-          if (noOfRows%2 == 0) {
-              if (rowNum - 1 <= noOfRows/2) {
-                  ticketCost = 10;
-              } else {
-                  ticketCost = 8;
-              }
-          }else {
-              if (rowNum - 1 + 1 <= noOfRows/2) { // +1 because if rows are odd we need to count extra 1 row in back.
-                  ticketCost = 10;
-              } else {
-                  ticketCost = 8;
-              }
-          }
+                int ticketCost;
+                if(noOfRows*noOfCols <= 60) {
+                    ticketCost = 10;
+                } else {
+                    if (noOfRows%2 == 0) {
+                        if (rowNum - 1 <= noOfRows/2) {
+                            ticketCost = 10;
+                        } else {
+                            ticketCost = 8;
+                        }
+                    }else {
+                        if (rowNum - 1 + 1 <= noOfRows/2) { // +1 because if rows are odd we need to count extra 1 row in back.
+                            ticketCost = 10;
+                        } else {
+                            ticketCost = 8;
+                        }
+                    }
+                }
+                System.out.println("Ticket price: $"+ticketCost);
+                rooms[rowNum-1][colNum-1] = "B ";
+            }
         }
-        System.out.println("Ticket price: $"+ticketCost);
-        rooms[rowNum-1][colNum-1] = "B ";
-
-        printRoom(rooms, noOfRows, noOfCols);
     }
 
     public static void printRoom(String[][] rooms, int noOfRows, int noOfCols) {
