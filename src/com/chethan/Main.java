@@ -44,12 +44,13 @@ public class Main {
                     System.out.println("Enter a seat number in that row:");
                     int colNum = sc.nextInt();
 
-                    if (rowNum >= noOfRows || rowNum < 0 || colNum >= noOfCols || colNum < 0) {
+                    if (rowNum > noOfRows || rowNum < 0 || colNum > noOfCols || colNum < 0) {
                         System.out.println();
                         System.out.println("Wrong input!");
                         continue;
                     }
-                    if ("B".equalsIgnoreCase(rooms[rowNum-1][colNum-1])) {
+
+                    if ("B".equals(rooms[rowNum-1][colNum-1].trim())) {
                         System.out.println();
                         System.out.println("That ticket has already been purchased!");
                         continue;
