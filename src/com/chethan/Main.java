@@ -20,7 +20,7 @@ public class Main {
         }
         int totalSeats = noOfRows * noOfCols;
         int ticketsSold = 0;
-        int totalIncome = totalSeats <= 60 ? (10 * totalSeats) : (noOfRows % 2 == 0) ? (9 * totalSeats) : ((5 * totalSeats) + (noOfRows+1)/2 * noOfCols * 8);
+        int totalIncome = totalSeats <= 60 ? (10 * totalSeats) : (noOfRows % 2 == 0) ? (9 * totalSeats) : (((noOfRows/2) * noOfCols * 10) + (noOfRows+1)/2 * noOfCols * 8);
         int currentIncome = 0;
 
         while (true) {
